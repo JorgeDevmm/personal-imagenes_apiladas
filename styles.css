@@ -1,0 +1,87 @@
+:root {
+  --primary: #273746;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--primary);
+}
+
+/* estilo contenedor principal */
+.container-imagenes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /*100% del vierport pantalla*/
+}
+
+.container-imagenes .imagen {
+  position: relative;
+  margin-right: -2rem;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/* estilos para las imagenes */
+.container-imagenes .imagen .imgcollection {
+  width: 15rem;
+  height: 15rem;
+  transition: transform 0.32s ease-in-out; /*tiempo, aceleración*/
+}
+
+.container-imagenes .imagen .nombre {
+  position: absolute; /* para poder ubicar el top del elemnento */
+  background-color: #fff;
+  border-radius: 0.3rem;
+  color: #273746;
+  font-weight: bold;
+  display: none; /*va estar flotando*/
+  min-width: 10rem;
+  width: 10.5rem;
+  top: -7rem;
+  padding: 1rem 1.5rem;
+}
+
+.container-imagenes .imagen .nombre .text {
+  display: inline-block;
+  text-overflow: ellipsis; /*cuanod el elemento es muy largo*/
+  overflow: hidden; /*ocultar el elemento sobrante*/
+  white-space: nowrap;
+  margin: 0 auto;
+  width: 10.5rem;
+
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.container-imagenes .imagen:hover .nombre {
+  display: inline-block;
+  transform: translateY(-2rem);
+}
+
+/* pseudoelemento */
+.container-imagenes .imagen .nombre::before {
+  content: '';
+  position: absolute;
+  width: 0.1rem;
+  height: 0.1rem;
+  left: 40%;
+  bottom: -2rem;
+  border-top: 1rem solid white;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+}
+
+/* animación */
+.container-imagenes .imagen:hover .imgcollection {
+  transform: translateY(-2rem); /*mover hacia el punto -y animación*/
+}
+
+/* mediaquery */
+@media (max-width: 768px) {
+  .container-imagenes {
+    flex-direction: column;
+    height: 180vh;
+  }
+}
